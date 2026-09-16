@@ -2,20 +2,12 @@
 
 require_once("../conexao.php");
 require_once("../buscar_estoque.php");
-/* =====================================================
-   CONFIGURAÇÃO DESTE ANDAR
-   Térreo = andar 0 (mesmo padrão usado no index.php
-   e no buscar_estoque.php: $estoque_por_andar[0])
-   ===================================================== */
+
 $ANDAR_ATUAL = 0;
 
 $mensagem = null;
 $erro = null;
 
-/* =====================================================
-   Exibe mensagem vinda de um redirecionamento anterior
-   (padrão Post/Redirect/Get, evita reenvio do form)
-   ===================================================== */
 if (isset($_GET['status']) && isset($_GET['msg'])) {
     if ($_GET['status'] === 'ok') {
         $mensagem = $_GET['msg'];
@@ -24,14 +16,11 @@ if (isset($_GET['status']) && isset($_GET['msg'])) {
     }
 }
 
-/* =====================================================
-   PROCESSAMENTO DO USO DE ABSORVENTE
-   ===================================================== */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $quantidade = isset($_POST['quantidade']) ? trim($_POST['quantidade']) : '';
 
-    // Validação: precisa ser um número inteiro entre 1 e 15 (mesmo limite do input)
+  
     if ($quantidade === '' || !ctype_digit($quantidade) || (int) $quantidade < 1 || (int) $quantidade > 15) {
 
         header("Location: terreo.php?" . http_build_query([
@@ -43,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $quantidade = (int) $quantidade;
 
-    // Verifica quanto tem em estoque para este andar antes de descontar
+  
     $sqlVerifica = "SELECT qtd FROM estoque WHERE andar = ?";
     $stmt = mysqli_prepare($conexao, $sqlVerifica);
     mysqli_stmt_bind_param($stmt, "i", $ANDAR_ATUAL);
@@ -70,14 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } else {
 
-        // Desconta a quantidade usada do estoque deste andar
+       
         $sqlUpdate = "UPDATE estoque SET qtd = qtd - ? WHERE andar = ?";
         $stmt = mysqli_prepare($conexao, $sqlUpdate);
         mysqli_stmt_bind_param($stmt, "ii", $quantidade, $ANDAR_ATUAL);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        // Registra o uso no histórico
+     
         $sqlHistorico = "INSERT INTO historico_uso (andar, estoque, data) VALUES (?, ?, NOW())";
         $stmt = mysqli_prepare($conexao, $sqlHistorico);
         mysqli_stmt_bind_param($stmt, "ii", $ANDAR_ATUAL, $quantidade);
@@ -105,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
    <style>
-    /* abscontrol — tema rosa (página de setor / formulário) */
+   
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap');
 
@@ -150,9 +139,7 @@ h2 {
   text-align: center;
 }
 
-/* O <br><br> do autor cria o respiro entre título e formulário;
-   reduzimos a altura de linha desses <br> soltos para não abrir
-   um vão exagerado. */
+
 h2 + br,
 h2 + br + br {
   line-height: 0.6;
@@ -160,7 +147,7 @@ h2 + br + br {
   content: '';
 }
 
-/* Formulário como um cartão sobre o fundo rosa */
+
 form {
   max-width: 420px;
   margin: 24px auto 0;
@@ -220,9 +207,6 @@ textarea::placeholder {
   color: #b79aa1;
 }
 
-/* O botão tem cor verde fixa via style="" no HTML (inline styles
-   sempre vencem o CSS), então usamos !important para trazê-lo
-   para o tema rosa sem tocar no HTML. */
 button[type="submit"] {
   background-color: var(--accent) !important;
   color: #ffffff !important;
@@ -244,7 +228,7 @@ button[type="submit"]:active {
   transform: translateY(1px);
 }
 
-/* Link de volta ao painel principal */
+
 a {
   display: block;
   max-width: 420px;
@@ -261,7 +245,7 @@ a:hover {
   color: var(--accent);
 }
 
-/* Mensagens de sucesso / erro */
+
 .mensagem {
   max-width: 420px;
   margin: 24px auto 0;
@@ -305,9 +289,9 @@ a:hover {
 
     <br><br>
 
-    <!-- O formulário envia os dados para este mesmo arquivo processar -->
+    
     <form method="POST" action="">
-        <!-- Identifica que esta página é o térreo (andar 0) -->
+ 
         <input type="hidden" name="andar" value="0">
         <?php echo isset($estoque_por_andar[0]) ? $estoque_por_andar[0] . " unidades" : "Sem dados"; ?>
         <br><br>
