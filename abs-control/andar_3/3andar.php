@@ -60,14 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } else {
 
-        // Desconta a quantidade usada do estoque deste andar
+        
         $sqlUpdate = "UPDATE estoque SET qtd = qtd - ? WHERE andar = ?";
         $stmt = mysqli_prepare($conexao, $sqlUpdate);
         mysqli_stmt_bind_param($stmt, "ii", $quantidade, $ANDAR_ATUAL);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        // Registra o uso no histórico
+        
         $sqlHistorico = "INSERT INTO historico_uso (andar, estoque, data) VALUES (?, ?, NOW())";
         $stmt = mysqli_prepare($conexao, $sqlHistorico);
         mysqli_stmt_bind_param($stmt, "ii", $ANDAR_ATUAL, $quantidade);
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
    <style>
-    /* abscontrol — tema rosa (página de setor / formulário) */
+    
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap');
 
@@ -128,7 +128,7 @@ body {
   padding: 48px 20px 64px;
 }
 
-/* Título do setor */
+
 h2 {
   max-width: 480px;
   margin: 0 auto;
@@ -140,9 +140,7 @@ h2 {
   text-align: center;
 }
 
-/* O <br><br> do autor cria o respiro entre título e formulário;
-   reduzimos a altura de linha desses <br> soltos para não abrir
-   um vão exagerado. */
+
 h2 + br,
 h2 + br + br {
   line-height: 0.6;
@@ -150,7 +148,6 @@ h2 + br + br {
   content: '';
 }
 
-/* Formulário como um cartão sobre o fundo rosa */
 form {
   max-width: 420px;
   margin: 24px auto 0;
@@ -234,7 +231,7 @@ button[type="submit"]:active {
   transform: translateY(1px);
 }
 
-/* Link de volta ao painel principal */
+
 a {
   display: block;
   max-width: 420px;
@@ -251,7 +248,7 @@ a:hover {
   color: var(--accent);
 }
 
-/* Mensagens de sucesso / erro */
+
 .mensagem {
   max-width: 420px;
   margin: 24px auto 0;
@@ -295,9 +292,9 @@ a:hover {
 
     <br><br>
 
-    <!-- O formulário envia os dados para este mesmo arquivo processar -->
+   
     <form method="POST" action="">
-        <!-- Identifica que esta página é o térreo (andar 2) -->
+      
         <input type="hidden" name="andar" value="3">
         <?php echo isset($estoque_por_andar[3]) ? $estoque_por_andar[3] . " unidades" : "Sem dados"; ?>
         <br><br>
