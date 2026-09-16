@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --wine: #6f2f42;
+  --wine-dark: #4a1e2c;
+  --sage: #8a6b81;
+  --sage-dark: #5d506c;
+  --ivory: #faf6f0;
+  --card: #ffffff;
+  --ink: #2b2320;
+  --ink-soft: #6b5f58;
+  --line: #e7ddd2;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(165deg, var(--wine) 0%, var(--wine-dark) 100%);
+  color: var(--ivory);
+  padding: 4.5rem 1.5rem 6rem;
+  text-align: left;
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5vw, 2.9rem);
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  max-width: 46ch;
+  color: #efe1e6;
+  margin: 0;
+}
+
+/* ---------- Floor selection panel ---------- */
+
+.panel-wrap {
+  max-width: 640px;
+  margin: -3.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: 0 24px 48px -28px rgba(74, 30, 44, 0.35);
+}
+
+.panel-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
+}
+
+.floors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.floor-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--ivory);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.floor-btn:hover {
+  background: #f3e9ec;
+  border-color: var(--wine);
+  transform: translateX(2px);
+}
+
+.floor-btn:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 2px;
+}
+
+.floor-dot {
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 8px;
+  background: var(--sage);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floor-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.floor-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+.floor-sub {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* links that wrap buttons shouldn't add their own styling */
+.panel a {
+  text-decoration: none;
+  display: block;
+}
+
+/* ---------- Admin link ---------- */
+
+.admin-link {
+  display: block;
+  text-align: center;
+  margin: 2.5rem auto 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.admin-link:hover {
+  color: var(--wine);
+  text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  .panel-wrap {
+    padding: 0 1.25rem;
+  }
+
+  .panel {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+}

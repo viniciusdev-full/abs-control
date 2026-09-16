@@ -1,0 +1,13 @@
+* falta adicionar
+❌❌❌
+❌-mostrar a quantidade de absorvente de cada andar(mensagem);
+
+❌-criar uma nova tabela de historico para saber qual a quantidade de absorvente e utilizado em cada andar;
+
+-quando terminar do terreo e tudo tiver funcionando, repetir os demais;
+
+-prestar a atencao nos dados do xampp do curso para ver se nao tem nada diferente do codigo;
+
+-reparar bem nos href's;
+
+❌-adicionar um botao de racarga para cada andar;

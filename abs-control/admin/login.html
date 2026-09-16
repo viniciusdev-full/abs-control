@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login do Administrador</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <h2>Login do Administrador</h2>
+
+        <form action="logar_admin.php" method="POST">
+
+            <label>Nome:</label>
+
+            <input type="text" name="nome" required>
+
+            <label>Senha:</label>
+
+            <input type="password" name="senha" required>
+
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <a href="../index.php">
+            Voltar
+        </a>
+
+    </div>
+
+</body>
+
+</html>
