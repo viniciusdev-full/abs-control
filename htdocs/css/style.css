@@ -24,6 +24,8 @@ html {
 }
 
 body {
+  text-align: center;
+  align-items: center;
   margin: 0;
   background: var(--ivory);
   color: var(--ink);
@@ -41,9 +43,12 @@ body {
 /* ---------- Hero ---------- */
 
 .hero {
+  display: grid;
+  align-items: center;
+  align-content: center;
   background: linear-gradient(165deg, var(--wine) 0%, var(--wine-dark) 100%);
   color: var(--ivory);
-  padding: 4.5rem 1.5rem 6rem;
+  padding: 10px;
   text-align: left;
 }
 
@@ -70,9 +75,11 @@ body {
 /* ---------- Floor selection panel ---------- */
 
 .panel-wrap {
+  position:relative ;
+  align-items: center;
   max-width: 640px;
-  margin: -3.5rem auto 0;
-  padding: 0 1.5rem;
+  margin: auto;
+  padding: 10px;
 }
 
 .panel {

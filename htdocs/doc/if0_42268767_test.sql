@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql304.infinityfree.com
--- Tempo de geração: 16/09/2026 às 08:15
+-- Tempo de geração: 06/10/2026 às 09:02
 -- Versão do servidor: 11.4.13-MariaDB
 -- Versão do PHP: 7.2.22
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `if0_42268756_abs_control`
+-- Banco de dados: `if0_42268767_test`
 --
 
 -- --------------------------------------------------------
@@ -42,7 +42,8 @@ INSERT INTO `admin` (`id`, `nome`, `senha`) VALUES
 (1, 'admin', '123admin123'),
 (0, 'jj', '123'),
 (0, 'admin', '098123'),
-(0, 'admin', '098123');
+(0, 'admin', '098123'),
+(0, 'admin', '123');
 
 -- --------------------------------------------------------
 
@@ -62,9 +63,9 @@ CREATE TABLE `estoque` (
 
 INSERT INTO `estoque` (`id`, `andar`, `qtd`) VALUES
 (1, 'terreo', 10),
-(2, '1andar', 10),
-(3, '2andar', 10),
-(4, '3andar', 30);
+(2, '1andar', 6),
+(3, '2andar', 2),
+(4, '3andar', 3);
 
 -- --------------------------------------------------------
 
@@ -84,17 +85,40 @@ CREATE TABLE `historico_uso` (
 --
 
 INSERT INTO `historico_uso` (`id`, `andar`, `estoque`, `data`) VALUES
-(0, '0', 3, '2026-09-14 07:03:43'),
-(0, '0', 3, '2026-09-14 07:11:50'),
-(0, '1', 3, '2026-09-14 07:27:30'),
-(0, '0', 2, '2026-09-14 07:27:46'),
-(0, '3', 9, '2026-09-14 07:29:23'),
-(0, '0', 1, '2026-09-14 07:35:58'),
-(0, '1', 3, '2026-09-15 04:10:15'),
-(0, '2', 5, '2026-09-15 04:10:32'),
-(0, '0', 4, '2026-09-15 04:51:13'),
-(0, '1', 4, '2026-09-15 04:52:42'),
-(0, '0', 2, '2026-09-15 05:52:23');
+(1, '3', 2, '2026-10-06 05:17:40'),
+(2, '2', 1, '2026-10-06 05:20:30'),
+(3, '1', 4, '2026-10-06 05:21:14'),
+(4, '1', 2, '2026-10-06 05:24:42'),
+(5, '1', 4, '2026-10-06 05:25:46'),
+(6, '1', 2, '2026-10-06 05:37:56'),
+(7, '1', 1, '2026-10-06 05:39:28'),
+(8, '1', 1, '2026-10-06 05:40:19');
+
+--
+-- Índices de tabelas apagadas
+--
+
+--
+-- Índices de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `historico_uso`
+--
+ALTER TABLE `historico_uso`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de tabelas apagadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `historico_uso`
+--
+ALTER TABLE `historico_uso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,12 +1,12 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once("conexao.php");
+require_once("../conexao.php");
 
 $nome = $_POST['nome'];
 $senha = $_POST['senha'];
 
-$sql = "SELECT * FROM admin WHERE NOME='$nome' AND SENHA='$senha'";
+$sql = "SELECT * FROM admin WHERE nome='$nome' AND senha='$senha'";
 
 $resultado = mysqli_query($conexao, $sql);
 
